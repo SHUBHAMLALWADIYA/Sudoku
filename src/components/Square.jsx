@@ -1,7 +1,3 @@
-
-
-
-
 import React from 'react';
 import { Input } from '@chakra-ui/react';
 
@@ -11,6 +7,9 @@ function Square({ cell, onChange, rowIndex, colIndex, isBorderRight, isBorderBot
             onChange(e, rowIndex, colIndex);
         }
     };
+
+    const borderRight = isBorderRight ? "2px solid black" : "1px solid gray.300";
+    const borderBottom = isBorderBottom ? "2px solid black" : "1px solid gray.300";
 
     return (
         <Input
@@ -23,15 +22,16 @@ function Square({ cell, onChange, rowIndex, colIndex, isBorderRight, isBorderBot
             variant="filled"
             textAlign="center"
             size="lg"
-            borderColor={cell.isHinted ? 'blue' : 'gray.300'}
+            borderColor="gray.300"
             _hover={{ borderColor: 'gray.400' }}
-            fontSize={["xs", "sm", "md"]}  // Responsive font size
+            fontSize={["xs", "sm", "md"]}  // Responsive font sizes
             width={["40px", "45px", "50px"]}  // Responsive widths
-            height={["40px", "45px", "50px"]}  // Responsive heights
-            border-Color={isBorderRight || isBorderBottom ? "black" : "gray.300"}
-            borderWidth="2px"
-            backgroundColor={cell.isHinted ? 'yellow' : (cell.isDefault ? 'white' : 'white')}
-            color={cell.isDefault ? 'black' : 'black'}
+            height={["40px", "45px", "50px"]}  // Responsive heights, matching widths
+            borderRight={borderRight}
+            borderBottom={borderBottom}
+            padding="0px"  // Remove padding
+            backgroundColor={cell.isHinted ? 'yellow' : (cell.isDefault ? 'black' : 'white')}
+            color={cell.isDefault ? 'white' : 'black'}
         />
     );
 }

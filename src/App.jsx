@@ -119,8 +119,8 @@ const App = () => {
       <Box maxW={{ base: "90vw", md: "450px" }} mx="auto">
           <VStack spacing={4} align="stretch">
               <Box textAlign="center">
-                  <h1>Sudoku Game</h1>
-                  <Select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} size="sm">
+                  <h1>Shubham Lalwadiya SUDOKU Game</h1>
+                  <Select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} size="sm" justifyItems="center">
                       <option value="easy">Easy</option>
                       <option value="medium">Medium</option>
                       <option value="hard">Hard</option>
@@ -130,7 +130,7 @@ const App = () => {
                   Timer: {Math.floor(timer / 60)}:{('0' + (timer % 60)).slice(-2)}
               </Box>
               <Board grid={grid} onChange={handleChange} hintedCell={hintedCell} />
-              <Grid templateColumns="repeat(auto-fit, minmax(120px, 1fr))" gap={2}>
+              <Grid templateColumns="repeat(auto-fit, minmax(120px, 1fr))" gap={2} justifyItems="center">
                   <Button onClick={handleCheck}>Check Solution</Button>
                   <Button colorScheme="blue" onClick={handleSolve}>Solve Puzzle</Button>
                   <Button colorScheme="red" onClick={handleReset}>Reset Puzzle</Button>

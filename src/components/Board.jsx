@@ -1,10 +1,17 @@
 import React from 'react';
-import { SimpleGrid } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 import Square from './Square';
 
 function Board({ grid, onChange, hintedCell }) {
     return (
-        <SimpleGrid columns={9} spacing={1} width="100%" autoFlow="row dense">
+        <Grid
+            templateColumns="repeat(9, 1fr)"
+            gap={1}  // Small gap for visibility of lines
+            p={2}    // Padding to ensure grid is within a box-model
+            width="auto"  // Auto width based on content
+            height="auto"  // Auto height based on content
+            autoFlow="row dense"  // Ensures the grid adjusts to screen size, maintaining row integrity
+        >
             {grid.map((row, rowIndex) =>
                 row.map((cell, colIndex) => (
                     <Square
@@ -13,13 +20,13 @@ function Board({ grid, onChange, hintedCell }) {
                         onChange={onChange}
                         rowIndex={rowIndex}
                         colIndex={colIndex}
-                        isBorderRight={(colIndex + 1) % 3 === 0}
-                        isBorderBottom={(rowIndex + 1) % 3 === 0}
+                        isBorderRight={(colIndex + 1) % 3 === 0 && colIndex !== 8}
+                        isBorderBottom={(rowIndex + 1) % 3 === 0 && rowIndex !== 8}
                     />
                 ))
             )}
-        </SimpleGrid>
+        </Grid>
     );
 }
 
-export default Board
+export default Board;
